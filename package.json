@@ -20,6 +20,7 @@
   "devDependencies": {
     "@csstools/postcss-sass": "^4.0.0",
     "@ember/optional-features": "^0.7.0",
+    "@fullhuman/postcss-purgecss": "^1.2.0",
     "autoprefixer": "^9.5.1",
     "broccoli-asset-rev": "^3.0.0",
     "ember-ajax": "^5.0.0",

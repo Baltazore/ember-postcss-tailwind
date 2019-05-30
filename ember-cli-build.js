@@ -4,6 +4,8 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 const postcssScss = require('@csstools/postcss-sass');
 const autoprefixer = require('autoprefixer');
 const tailwindcss = require('tailwindcss');
+// Many thanks for help https://www.jurecuhalev.com/blog/2018/09/07/using-purgecss-with-ember-js/
+const purgecss = require('@fullhuman/postcss-purgecss')
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
@@ -32,6 +34,13 @@ module.exports = function(defaults) {
             module: autoprefixer,
             options: {
               browsers: ['last 2 versions', 'ie 11'] // this will override the config, but just for this plugin
+            }
+          },
+          {
+            module: purgecss,
+            options: {
+              content: ['./app/**/*.hbs', './app/**/.js'],
+              defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
             }
           }
         ]
