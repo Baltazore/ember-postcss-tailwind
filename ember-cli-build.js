@@ -1,10 +1,42 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const postcssScss = require('@csstools/postcss-sass');
+const autoprefixer = require('autoprefixer');
+const tailwindcss = require('tailwindcss');
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    postcssOptions: {
+      compile: {
+        extension: 'scss',
+        enabled: true,
+        parser: require('postcss-scss'),
+        plugins: [
+          {
+            module: postcssScss,
+            options: {
+              includePaths: [
+              ],
+            },
+          },
+          {
+            module: tailwindcss,
+          }
+        ],
+      },
+      filter: {
+        enabled: true,
+        plugins: [
+          {
+            module: autoprefixer,
+            options: {
+              browsers: ['last 2 versions', 'ie 11'] // this will override the config, but just for this plugin
+            }
+          }
+        ]
+      }
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
