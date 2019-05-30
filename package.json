@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "@csstools/postcss-sass": "^4.0.0",
-    "@ember/jquery": "^0.6.0",
     "@ember/optional-features": "^0.7.0",
     "autoprefixer": "^9.5.1",
     "broccoli-asset-rev": "^3.0.0",
